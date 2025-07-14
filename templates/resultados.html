@@ -1,0 +1,121 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container my-4">
+
+    <h2 class="text-center mb-4">Resultados del Análisis Jerárquico</h2>
+
+    <!-- Dendrograma -->
+    <div class="card mb-4 shadow">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">Dendrograma</h5>
+        </div>
+        <div class="card-body text-center">
+            <img src="data:image/png;base64,{{ dendrograma }}" class="img-fluid" alt="Dendrograma">
+        </div>
+    </div>
+
+    <!-- Scatter Plot -->
+    <div class="card mb-4 shadow">
+        <div class="card-header bg-success text-white">
+            <h5 class="mb-0">Gráfico de Dispersión (Scatter Plot)</h5>
+        </div>
+        <div class="card-body text-center">
+            <img src="data:image/png;base64,{{ scatter }}" class="img-fluid" alt="Scatter Plot">
+        </div>
+    </div>
+
+    <!-- Datos usados -->
+    <div class="card mb-4 shadow">
+        <div class="card-header bg-dark text-white">
+            <h5 class="mb-0">Datos Analizados</h5>
+        </div>
+        <div class="card-body table-responsive">
+            {{ datos | safe }}
+        </div>
+    </div>
+
+    <!-- Métricas de Calidad -->
+    <div class="card mb-4 shadow">
+        <div class="card-header bg-info text-white">
+            <h5 class="mb-0">Métricas de Calidad del Clustering</h5>
+        </div>
+        <div class="card-body">
+            <ul class="list-group">
+                <li class="list-group-item">Índice de Silueta: <strong>{{ metricas.silhouette | round(4) }}</strong></li>
+                <li class="list-group-item">Índice de Calinski-Harabasz: <strong>{{ metricas.calinski | round(4) }}</strong></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Estadísticas por Clúster -->
+    <div class="card mb-4 shadow">
+        <div class="card-header bg-secondary text-white">
+            <h5 class="mb-0">Estadísticas por Clúster</h5>
+        </div>
+        <div class="card-body">
+            {% for cluster, stats in estadisticas.items() %}
+                <h6 class="mt-3"><strong>{{ cluster }}</strong> ({{ stats.tamaño }} elementos)</h6>
+                <div class="table-responsive">
+                    <table class="table table-sm table-bordered">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Variable</th>
+                                <th>Media</th>
+                                <th>STD</th>
+                                <th>Mín</th>
+                                <th>Máx</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for var in stats.media %}
+                            <tr>
+                                <td>{{ var }}</td>
+                                <td>{{ stats.media[var] | round(2) }}</td>
+                                <td>{{ stats.std[var] | round(2) }}</td>
+                                <td>{{ stats.min[var] | round(2) }}</td>
+                                <td>{{ stats.max[var] | round(2) }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Matriz de Distancias entre Centroides -->
+    <div class="card mb-4 shadow">
+        <div class="card-header bg-warning text-dark">
+            <h5 class="mb-0">Matriz de Distancias entre Centroides</h5>
+        </div>
+        <div class="card-body table-responsive">
+            <table class="table table-bordered table-sm text-center align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th></th>
+                        {% for i in range(dist_matrix.shape[0]) %}
+                        <th>Cluster {{ i + 1 }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in range(dist_matrix.shape[0]) %}
+                    <tr>
+                        <th>Cluster {{ i + 1 }}</th>
+                        {% for j in range(dist_matrix.shape[1]) %}
+                        <td>{{ dist_matrix[i][j] | round(2) }}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Botón para volver -->
+    <div class="text-center mt-4">
+        <a href="{{ url_for('analisis') }}" class="btn btn-outline-primary">Volver al análisis</a>
+    </div>
+
+</div>
+{% endblock %}

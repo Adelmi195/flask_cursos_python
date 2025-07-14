@@ -1,0 +1,91 @@
+body {
+    background-color: #f5faff;
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #003366;
+}
+
+.navbar {
+    background-color: #007acc;
+}
+
+.navbar .nav-link {
+    color: #ffffff !important;
+}
+
+.navbar .nav-link:hover {
+    color: #cceeff !important;
+}
+
+h2, h3 {
+    color: #005b99;
+}
+
+.btn-primary {
+    background-color: #005b99;
+    border-color: #005b99;
+}
+
+.btn-primary:hover {
+    background-color: #004d80;
+    border-color: #004d80;
+}
+
+.btn-success {
+    background-color: #0099cc;
+    border-color: #0099cc;
+}
+
+.btn-success:hover {
+    background-color: #0077aa;
+    border-color: #0077aa;
+}
+
+.form-control, .form-select {
+    border-color: #cce0f5;
+    box-shadow: none;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #66b2ff;
+    box-shadow: 0 0 0 0.2rem rgba(102, 178, 255, 0.25);
+}
+
+.table {
+    background-color: #ffffff;
+}
+
+.table-bordered th,
+.table-bordered td {
+    border: 1px solid #b3d1ff;
+}
+
+.tab-content {
+    background-color: #ffffff;
+    border: 1px solid #d0e7ff;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.nav-tabs .nav-link.active {
+    background-color: #cceeff;
+    color: #003366;
+    border: 1px solid #99ccff;
+}
+
+.nav-tabs .nav-link {
+    color: #005b99;
+}
+
+.shadow-sm {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 102, 204, 0.075);
+}
+
+h2.titulo-principal {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    color: #003366;
+    text-align: center;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}

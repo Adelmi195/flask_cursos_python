@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>Simular Datos</h2>
+<form method="POST">
+    <label for="cantidad">Cantidad de datos:</label>
+    <input type="number" name="cantidad" min="2" value="10" required>
+    <button type="submit" class="btn btn-success">Simular</button>
+</form>
+{% if datos %}
+<h4>Datos simulados:</h4>
+{{ datos | safe }}
+{% endif %}
+{% if dendrograma %}
+<h4>Dendrograma:</h4>
+<img src="data:image/png;base64,{{ dendrograma }}">
+{% endif %}
+{% endblock %}

@@ -1,0 +1,101 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+    <h2 class="titulo-principal text-center mb-4">📘 Conceptos Fundamentales</h2>
+
+    <div class="accordion" id="accordionConceptos">
+
+        <!-- 1. Introducción -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="concepto1">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1">
+                    1. Introducción
+                </button>
+            </h2>
+            <div id="collapse1" class="accordion-collapse collapse show" data-bs-parent="#accordionConceptos">
+                <div class="accordion-body">
+                    <p><strong>La clasificación jerárquica</strong> es una técnica de agrupamiento no supervisado que organiza los datos en un dendrograma (estructura de árbol). Útil cuando no se conoce el número de grupos previamente.</p>
+                    <ul>
+                        <li>No requiere número de clusters definido</li>
+                        <li>Produce jerarquías completas</li>
+                        <li>Permite visualización a distintos niveles</li>
+                        <li>Determinista (mismo resultado siempre)</li>
+                    </ul>
+                    <p><strong>Tipos:</strong></p>
+                    <ul>
+                        <li><strong>Aglomerativa:</strong> comienza con puntos individuales y agrupa</li>
+                        <li><strong>Divisiva:</strong> comienza con un solo grupo y lo divide</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. Métodos de Enlace -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="concepto2">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2">
+                    2. Métodos de Enlace
+                </button>
+            </h2>
+            <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#accordionConceptos">
+                <div class="accordion-body">
+                    <p>Definen cómo se calcula la distancia entre clusters:</p>
+                    <ul>
+                        <li><strong>Single:</strong> Distancia mínima (forma cadenas)</li>
+                        <li><strong>Complete:</strong> Distancia máxima (clusters compactos)</li>
+                        <li><strong>Average:</strong> Promedio de distancias</li>
+                        <li><strong>Centroid:</strong> Basado en centroides</li>
+                        <li><strong>Ward:</strong> Minimiza la varianza dentro de los grupos</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. Métricas de Distancia -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="concepto3">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3">
+                    3. Métricas de Distancia
+                </button>
+            </h2>
+            <div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#accordionConceptos">
+                <div class="accordion-body">
+                    <ul>
+                        <li><strong>Euclidiana:</strong> Distancia directa. Útil con datos normalizados.</li>
+                        <li><strong>Manhattan:</strong> Suma de distancias absolutas. Menos sensible a outliers.</li>
+                        <li><strong>Coseno:</strong> Mide el ángulo entre vectores (alta dimensionalidad).</li>
+                        <li><strong>Correlación:</strong> Basada en similitud de patrones.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. Interpretación -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="concepto4">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4">
+                    4. Interpretación de Resultados
+                </button>
+            </h2>
+            <div id="collapse4" class="accordion-collapse collapse" data-bs-parent="#accordionConceptos">
+                <div class="accordion-body">
+                    <p><strong>Dendrograma:</strong> Visualiza la jerarquía. Las fusiones más bajas indican mayor similitud.</p>
+                    <ul>
+                        <li>Observa la altura de las uniones</li>
+                        <li>Usa el corte horizontal para definir clusters</li>
+                    </ul>
+                    <p><strong>Validación:</strong> Usa índices como la silueta o Calinski-Harabasz.</p>
+                    <p><strong>Buenas prácticas:</strong></p>
+                    <ul>
+                        <li>Normalizar los datos</li>
+                        <li>Probar varios métodos y métricas</li>
+                        <li>Contextualizar los resultados</li>
+                        <li>Interpretar los perfiles de cada grupo</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

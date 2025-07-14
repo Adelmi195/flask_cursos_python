@@ -1,0 +1,186 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2 class="titulo-principal">Guía de Uso del Programa</h2>
+
+<div class="accordion" id="ayudaAccordion">
+
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="heading1">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                1. Cargar Datos
+            </button>
+        </h2>
+        <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#ayudaAccordion">
+            <div class="accordion-body">
+                <ul>
+                    <li><strong>Cargar CSV:</strong> Selecciona un archivo CSV con tus datos
+                        <ul>
+                            <li>Primera fila debe contener los nombres de las columnas</li>
+                            <li>Solo se procesarán columnas numéricas</li>
+                            <li>Valores faltantes serán eliminados automáticamente</li>
+                        </ul>
+                    </li>
+                    <li><strong>Simular Datos:</strong> Genera datos sintéticos para pruebas
+                        <ul>
+                            <li>Puedes especificar el número de muestras</li>
+                            <li>Se generarán datos con clusters conocidos</li>
+                            <li>Útil para aprender y probar el algoritmo</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="heading2">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                2. Configurar Parámetros
+            </button>
+        </h2>
+        <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="heading2" data-bs-parent="#ayudaAccordion">
+            <div class="accordion-body">
+                <ul>
+                    <li><strong>Método de Enlace:</strong>
+                        <ul>
+                            <li>Ward: Recomendado para la mayoría de casos</li>
+                            <li>Complete: Para clusters compactos</li>
+                            <li>Average: Método balanceado</li>
+                            <li>Single: Para clusters alargados</li>
+                        </ul>
+                    </li>
+                    <li><strong>Métrica de Distancia:</strong>
+                        <ul>
+                            <li>Euclidiana: La más común</li>
+                            <li>Manhattan: Menos sensible a outliers</li>
+                            <li>Coseno: Para datos de alta dimensionalidad</li>
+                        </ul>
+                    </li>
+                    <li><strong>Número de Clusters:</strong> Especifica cuántos grupos quieres</li>
+                    <li><strong>Normalizar Datos:</strong> Recomendado para la mayoría de casos</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="heading3">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                3. Ejecutar Análisis
+            </button>
+        </h2>
+        <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="heading3" data-bs-parent="#ayudaAccordion">
+            <div class="accordion-body">
+                <ul>
+                    <li>Presiona <strong>"Ejecutar Análisis"</strong> para procesar los datos</li>
+                    <li>Los resultados aparecerán en diferentes pestañas:
+                        <ul>
+                            <li><strong>Dendrograma:</strong> Muestra la jerarquía de clusters</li>
+                            <li><strong>Scatter Plot:</strong> Visualización de los clusters (2D)</li>
+                            <li><strong>Estadísticas:</strong> Información detallada de cada cluster</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="heading4">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                4. Interpretar Resultados
+            </button>
+        </h2>
+        <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="heading4" data-bs-parent="#ayudaAccordion">
+            <div class="accordion-body">
+                <ul>
+                    <li><strong>Dendrograma:</strong> Observa la altura de las fusiones</li>
+                    <li><strong>Scatter Plot:</strong> Verifica la separación visual de los clusters</li>
+                    <li><strong>Estadísticas:</strong> Analiza las características de cada cluster</li>
+                    <li><strong>Información:</strong> Revisa métricas de calidad</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="heading5">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+                5. Solución de Problemas
+            </button>
+        </h2>
+        <div id="collapse5" class="accordion-collapse collapse" aria-labelledby="heading5" data-bs-parent="#ayudaAccordion">
+            <div class="accordion-body">
+                <ul>
+                    <li>"Error al cargar CSV": Verifica que el archivo tenga columnas numéricas</li>
+                    <li>"Datos insuficientes": Necesitas al menos 2 filas de datos</li>
+                    <li>"Error en análisis": Revisa los parámetros seleccionados</li>
+                    <li>"Visualización vacía": Ejecuta primero el análisis</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="heading6">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
+                6. Consejos
+            </button>
+        </h2>
+        <div id="collapse6" class="accordion-collapse collapse" aria-labelledby="heading6" data-bs-parent="#ayudaAccordion">
+            <div class="accordion-body">
+                <ul>
+                    <li>Siempre normaliza los datos cuando uses distancia euclidiana</li>
+                    <li>Prueba diferentes métodos para comparar resultados</li>
+                    <li>El método Ward funciona bien con datos bien escalados</li>
+                    <li>Usa el dendrograma para decidir el número de clusters</li>
+                    <li>Valida los resultados con tu conocimiento del dominio</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="heading7">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse7" aria-expanded="false" aria-controls="collapse7">
+                7. Formato de Datos CSV
+            </button>
+        </h2>
+        <div id="collapse7" class="accordion-collapse collapse" aria-labelledby="heading7" data-bs-parent="#ayudaAccordion">
+            <div class="accordion-body">
+                <p>Archivo separado por comas</p>
+                <p>Primera fila: nombres de columnas</p>
+                <p>Solo columnas numéricas serán procesadas</p>
+                <p><strong>Ejemplo:</strong></p>
+                <pre>
+Variable1,Variable2,Variable3
+1.5,2.3,4.1
+2.1,1.8,3.9
+...
+                </pre>
+            </div>
+        </div>
+    </div>
+
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="heading8">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse8" aria-expanded="false" aria-controls="collapse8">
+                8. Atajos de Teclado
+            </button>
+        </h2>
+        <div id="collapse8" class="accordion-collapse collapse" aria-labelledby="heading8" data-bs-parent="#ayudaAccordion">
+            <div class="accordion-body">
+                <ul>
+                    <li><strong>Ctrl+O:</strong> Abrir archivo CSV</li>
+                    <li><strong>Ctrl+S:</strong> Guardar resultados</li>
+                    <li><strong>Ctrl+R:</strong> Ejecutar análisis</li>
+                    <li><strong>Ctrl+C:</strong> Limpiar análisis</li>
+                    <li><strong>F1:</strong> Mostrar esta ayuda</li>
+                </ul>
+                <p class="mt-3"><strong>Para más información, consulta la pestaña "Conceptos Fundamentales".</strong></p>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

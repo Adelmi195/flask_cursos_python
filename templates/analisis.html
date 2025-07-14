@@ -1,0 +1,103 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+    <h2 class="titulo-principal">🔎 Análisis de Clasificación Jerárquica</h2>
+
+    <!-- PANEL DE CONTROL -->
+    <div class="card shadow mb-4">
+        <div class="card-header fw-bold">Panel de Control</div>
+        <div class="card-body">
+            <form method="POST" action="{{ url_for('analizar_csv') }}" enctype="multipart/form-data" id="csv-form">
+                <div class="row g-3 align-items-center">
+                    <div class="col-md-4">
+                        <label class="form-label">📁 Cargar CSV</label>
+                        <input type="file" name="file" accept=".csv" class="form-control" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Método de Enlace</label>
+                        <select class="form-select" name="method" required>
+                            <option value="ward" selected>Ward</option>
+                            <option value="complete">Complete</option>
+                            <option value="average">Average</option>
+                            <option value="single">Single</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Métrica de Distancia</label>
+                        <select class="form-select" name="metric" required>
+                            <option value="euclidean">Euclidiana</option>
+                            <option value="cityblock">Manhattan</option>
+                            <option value="cosine">Coseno</option>
+                            <option value="correlation" selected>Correlación</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Número de Clusters</label>
+                        <input type="number" name="n_clusters" class="form-control" min="2" value="3" required>
+                    </div>
+                    <div class="col-md-4 d-flex align-items-center">
+                        <input class="form-check-input me-2" type="checkbox" name="normalize" id="normalize_csv" checked>
+                        <label class="form-check-label" for="normalize_csv">Normalizar Datos</label>
+                    </div>
+                    <div class="col-md-4 text-end">
+                        <button type="submit" class="btn btn-primary">🚀 Ejecutar Análisis</button>
+                        <button type="reset" class="btn btn-secondary">🧹 Limpiar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- SIMULAR DATOS -->
+    <div class="card shadow mb-4">
+        <div class="card-header fw-bold">Simular Datos</div>
+        <div class="card-body">
+            <form method="POST" action="{{ url_for('analizar_simulacion') }}">
+                <div class="row g-3">
+                    <div class="col-md-3">
+                        <label class="form-label">N° Muestras</label>
+                        <input type="number" name="n_samples" class="form-control" value="100" min="10" required>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">N° Características</label>
+                        <input type="number" name="n_features" class="form-control" value="2" min="2" required>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">N° Clusters Reales</label>
+                        <input type="number" name="n_centers" class="form-control" value="3" min="2" required>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">N° Clusters Visualizar</label>
+                        <input type="number" name="n_clusters" class="form-control" value="3" min="2" required>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Método de Enlace</label>
+                        <select class="form-select" name="method">
+                            <option value="ward" selected>Ward</option>
+                            <option value="complete">Complete</option>
+                            <option value="average">Average</option>
+                            <option value="single">Single</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Métrica de Distancia</label>
+                        <select class="form-select" name="metric">
+                            <option value="euclidean">Euclidiana</option>
+                            <option value="cityblock">Manhattan</option>
+                            <option value="cosine">Coseno</option>
+                            <option value="correlation" selected>Correlación</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3 d-flex align-items-center">
+                        <input class="form-check-input me-2" type="checkbox" name="normalize" id="normalize_sim" checked>
+                        <label class="form-check-label" for="normalize_sim">Normalizar Datos</label>
+                    </div>
+                    <div class="col-md-3 text-end">
+                        <button type="submit" class="btn btn-success w-100">🧪 Simular y Analizar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
